@@ -1,0 +1,659 @@
+{
+  "facilities": [
+    {
+      "id": "PHC-014",
+      "name": "Ayushman PHC, Kolar",
+      "type": "PHC",
+      "district": "Bhopal",
+      "status": "Needs attention",
+      "stockRisk": 3,
+      "beds": 18,
+      "occupied": 13,
+      "attendance": 86,
+      "footfall": 142,
+      "tests": 12,
+      "testsAvailable": 10,
+      "updated": "8 min ago"
+    },
+    {
+      "id": "CHC-003",
+      "name": "Community Health Centre, Berasia",
+      "type": "CHC",
+      "district": "Bhopal",
+      "status": "Critical",
+      "stockRisk": 5,
+      "beds": 42,
+      "occupied": 38,
+      "attendance": 72,
+      "footfall": 286,
+      "tests": 18,
+      "testsAvailable": 14,
+      "updated": "12 min ago"
+    },
+    {
+      "id": "PHC-021",
+      "name": "Primary Health Centre, Phanda",
+      "type": "PHC",
+      "district": "Bhopal",
+      "status": "Healthy",
+      "stockRisk": 0,
+      "beds": 16,
+      "occupied": 7,
+      "attendance": 96,
+      "footfall": 98,
+      "tests": 12,
+      "testsAvailable": 12,
+      "updated": "4 min ago"
+    },
+    {
+      "id": "CHC-007",
+      "name": "Community Health Centre, Huzur",
+      "type": "CHC",
+      "district": "Bhopal",
+      "status": "Needs attention",
+      "stockRisk": 2,
+      "beds": 36,
+      "occupied": 29,
+      "attendance": 81,
+      "footfall": 231,
+      "tests": 18,
+      "testsAvailable": 16,
+      "updated": "21 min ago"
+    },
+    {
+      "id": "PHC-032",
+      "name": "Primary Health Centre, Gandhi Nagar",
+      "type": "PHC",
+      "district": "Bhopal",
+      "status": "Healthy",
+      "stockRisk": 0,
+      "beds": 14,
+      "occupied": 6,
+      "attendance": 92,
+      "footfall": 84,
+      "tests": 10,
+      "testsAvailable": 10,
+      "updated": "6 min ago"
+    },
+    {
+      "id": "PHC-039",
+      "name": "Primary Health Centre, Misrod",
+      "type": "PHC",
+      "district": "Bhopal",
+      "status": "Needs attention",
+      "stockRisk": 2,
+      "beds": 12,
+      "occupied": 10,
+      "attendance": 68,
+      "footfall": 117,
+      "tests": 10,
+      "testsAvailable": 8,
+      "updated": "38 min ago"
+    }
+  ],
+  "medicines": [
+    {
+      "id": "MED-001",
+      "name": "Paracetamol 500 mg",
+      "category": "Analgesic",
+      "batch": "PCM-24A",
+      "facility": "CHC Berasia",
+      "facilityId": "CHC-003",
+      "stock": 174,
+      "unit": "strips",
+      "reorder": 180,
+      "daily": 34,
+      "expiry": "2026-12-15",
+      "status": "Critical"
+    },
+    {
+      "id": "MED-002",
+      "name": "Amoxicillin 500 mg",
+      "category": "Antibiotic",
+      "batch": "AMX-11C",
+      "facility": "PHC Kolar",
+      "facilityId": "PHC-014",
+      "stock": 240,
+      "unit": "strips",
+      "reorder": 160,
+      "daily": 22,
+      "expiry": "2027-02-20",
+      "status": "Healthy"
+    },
+    {
+      "id": "MED-003",
+      "name": "ORS Sachets",
+      "category": "Essential",
+      "batch": "ORS-08B",
+      "facility": "CHC Berasia",
+      "facilityId": "CHC-003",
+      "stock": 86,
+      "unit": "sachets",
+      "reorder": 150,
+      "daily": 28,
+      "expiry": "2027-01-08",
+      "status": "Critical"
+    },
+    {
+      "id": "MED-004",
+      "name": "Metformin 500 mg",
+      "category": "Chronic care",
+      "batch": "MET-18D",
+      "facility": "PHC Misrod",
+      "facilityId": "PHC-039",
+      "stock": 98,
+      "unit": "strips",
+      "reorder": 140,
+      "daily": 18,
+      "expiry": "2026-11-22",
+      "status": "Critical"
+    },
+    {
+      "id": "MED-005",
+      "name": "Iron + Folic Acid",
+      "category": "Maternal health",
+      "batch": "IFA-22F",
+      "facility": "CHC Huzur",
+      "facilityId": "CHC-007",
+      "stock": 340,
+      "unit": "strips",
+      "reorder": 200,
+      "daily": 26,
+      "expiry": "2027-05-10",
+      "status": "Healthy"
+    },
+    {
+      "id": "MED-006",
+      "name": "Azithromycin 250 mg",
+      "category": "Antibiotic",
+      "batch": "AZI-05A",
+      "facility": "PHC Kolar",
+      "facilityId": "PHC-014",
+      "stock": 64,
+      "unit": "strips",
+      "reorder": 90,
+      "daily": 12,
+      "expiry": "2026-10-30",
+      "status": "Critical"
+    },
+    {
+      "id": "MED-007",
+      "name": "Zinc Tablets 20 mg",
+      "category": "Essential",
+      "batch": "ZNC-15C",
+      "facility": "PHC Phanda",
+      "facilityId": "PHC-021",
+      "stock": 310,
+      "unit": "strips",
+      "reorder": 160,
+      "daily": 16,
+      "expiry": "2027-04-18",
+      "status": "Healthy"
+    },
+    {
+      "id": "MED-008",
+      "name": "Salbutamol Inhaler",
+      "category": "Respiratory",
+      "batch": "SAL-02E",
+      "facility": "PHC Misrod",
+      "facilityId": "PHC-039",
+      "stock": 23,
+      "unit": "units",
+      "reorder": 30,
+      "daily": 4,
+      "expiry": "2027-01-31",
+      "status": "Critical"
+    },
+    {
+      "id": "MED-009",
+      "name": "Paracetamol 500 mg",
+      "category": "Analgesic",
+      "batch": "PCM-25P",
+      "facility": "PHC Phanda",
+      "facilityId": "PHC-021",
+      "stock": 150,
+      "unit": "strips",
+      "reorder": 70,
+      "daily": 10,
+      "expiry": "2027-03-30",
+      "status": "Healthy"
+    },
+    {
+      "id": "MED-010",
+      "name": "ORS Sachets",
+      "category": "Essential",
+      "batch": "ORS-12H",
+      "facility": "CHC Huzur",
+      "facilityId": "CHC-007",
+      "stock": 110,
+      "unit": "sachets",
+      "reorder": 60,
+      "daily": 10,
+      "expiry": "2027-06-30",
+      "status": "Healthy"
+    },
+    {
+      "id": "MED-011",
+      "name": "Salbutamol Inhaler",
+      "category": "Respiratory",
+      "batch": "SAL-08K",
+      "facility": "PHC Kolar",
+      "facilityId": "PHC-014",
+      "stock": 20,
+      "unit": "units",
+      "reorder": 10,
+      "daily": 2,
+      "expiry": "2027-05-31",
+      "status": "Healthy"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "ALT-001",
+      "severity": "Critical",
+      "title": "Paracetamol stock-out risk",
+      "facility": "CHC Berasia",
+      "detail": "Estimated coverage is 3.6 days against a 7-day replenishment lead time.",
+      "time": "8 min ago",
+      "kind": "Inventory"
+    },
+    {
+      "id": "ALT-002",
+      "severity": "Critical",
+      "title": "High bed occupancy",
+      "facility": "CHC Berasia",
+      "detail": "90% of beds are occupied; only 4 beds currently available.",
+      "time": "12 min ago",
+      "kind": "Capacity"
+    },
+    {
+      "id": "ALT-003",
+      "severity": "High",
+      "title": "Doctor attendance below target",
+      "facility": "PHC Misrod",
+      "detail": "Reported attendance is 68%, below the configured 80% threshold.",
+      "time": "38 min ago",
+      "kind": "Staffing"
+    },
+    {
+      "id": "ALT-004",
+      "severity": "High",
+      "title": "Diagnostic tests unavailable",
+      "facility": "PHC Kolar",
+      "detail": "2 of 12 listed tests are currently unavailable.",
+      "time": "8 min ago",
+      "kind": "Diagnostics"
+    }
+  ],
+  "transfers": [
+    {
+      "id": "TR-204",
+      "medicine": "Paracetamol 500 mg",
+      "medicineId": "MED-009",
+      "source": "PHC Phanda",
+      "destination": "CHC Berasia",
+      "requested": 80,
+      "available": 150,
+      "urgency": "Critical",
+      "status": "Awaiting review",
+      "distance": "18 km"
+    },
+    {
+      "id": "TR-205",
+      "medicine": "ORS Sachets",
+      "medicineId": "MED-010",
+      "source": "CHC Huzur",
+      "destination": "CHC Berasia",
+      "requested": 60,
+      "available": 110,
+      "urgency": "High",
+      "status": "Suggested",
+      "distance": "22 km"
+    },
+    {
+      "id": "TR-206",
+      "medicine": "Salbutamol Inhaler",
+      "medicineId": "MED-011",
+      "source": "PHC Kolar",
+      "destination": "PHC Misrod",
+      "requested": 12,
+      "available": 20,
+      "urgency": "High",
+      "status": "Suggested",
+      "distance": "14 km"
+    }
+  ],
+  "interventions": [
+    {
+      "id": "INT-081",
+      "facility": "CHC Berasia",
+      "issue": "Essential medicine shortage",
+      "severity": "Critical",
+      "owner": "District supply officer",
+      "due": "Today, 4:00 PM",
+      "status": "Open"
+    },
+    {
+      "id": "INT-082",
+      "facility": "PHC Misrod",
+      "issue": "Doctor attendance below threshold",
+      "severity": "High",
+      "owner": "Block medical officer",
+      "due": "Today, 6:00 PM",
+      "status": "In progress"
+    },
+    {
+      "id": "INT-083",
+      "facility": "PHC Kolar",
+      "issue": "Diagnostic service availability",
+      "severity": "Medium",
+      "owner": "Facility manager",
+      "due": "Tomorrow",
+      "status": "Open"
+    },
+    {
+      "id": "INT-084",
+      "facility": "CHC Huzur",
+      "issue": "Delayed operational report",
+      "severity": "Medium",
+      "owner": "Block medical officer",
+      "due": "Tomorrow",
+      "status": "Resolved"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-ECA45E8B",
+      "medicineId": "MED-005",
+      "medicineName": "Iron + Folic Acid",
+      "batch": "IFA-22F",
+      "facility": "CHC Huzur",
+      "type": "issued",
+      "quantity": 90,
+      "previousQuantity": 430,
+      "newQuantity": 340,
+      "note": "",
+      "createdAt": "2026-10-18T07:42:09.619Z"
+    },
+    {
+      "id": "TX-C6FAEB9F",
+      "medicineId": "MED-001",
+      "medicineName": "Paracetamol 500 mg",
+      "batch": "PCM-24A",
+      "facility": "CHC Berasia",
+      "type": "received",
+      "quantity": 50,
+      "previousQuantity": 124,
+      "newQuantity": 174,
+      "note": "ftybuvbu",
+      "createdAt": "2026-10-18T07:33:05.044Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "USR-E40BDB74",
+      "name": "District Demo Admin",
+      "email": "district.admin@demo.local",
+      "passwordHash": "602bd6f7204e12dd258c7e3b9953f53cb8f3b67483d9a1e059697fc9da8007806b558228ed3e67e419629692e1b7f16a73c0d22db1efe2325834a652668d6757",
+      "role": "District Administrator",
+      "district": "Bhopal",
+      "facilityIds": [],
+      "status": "approved",
+      "createdAt": "2026-10-18T07:15:08.340Z"
+    },
+    {
+      "id": "USR-22CBC3E5",
+      "name": "Facility Demo Manager",
+      "email": "facility.manager@demo.local",
+      "passwordHash": "602bd6f7204e12dd258c7e3b9953f53cb8f3b67483d9a1e059697fc9da8007806b558228ed3e67e419629692e1b7f16a73c0d22db1efe2325834a652668d6757",
+      "role": "Facility Manager",
+      "district": "Bhopal",
+      "facilityIds": [
+        "PHC-014"
+      ],
+      "status": "approved",
+      "createdAt": "2026-10-18T07:15:08.406Z"
+    },
+    {
+      "id": "USR-3F634294",
+      "name": "Demo Pharmacist",
+      "email": "pharmacist@demo.local",
+      "passwordHash": "602bd6f7204e12dd258c7e3b9953f53cb8f3b67483d9a1e059697fc9da8007806b558228ed3e67e419629692e1b7f16a73c0d22db1efe2325834a652668d6757",
+      "role": "Pharmacist / Storekeeper",
+      "district": "Bhopal",
+      "facilityIds": [
+        "PHC-014"
+      ],
+      "status": "approved",
+      "createdAt": "2026-10-18T07:15:08.472Z"
+    },
+    {
+      "id": "USR-E4416C06",
+      "name": "Demo Operations Staff",
+      "email": "operations.staff@demo.local",
+      "passwordHash": "602bd6f7204e12dd258c7e3b9953f53cb8f3b67483d9a1e059697fc9da8007806b558228ed3e67e419629692e1b7f16a73c0d22db1efe2325834a652668d6757",
+      "role": "Clinical / Operations Staff",
+      "district": "Bhopal",
+      "facilityIds": [
+        "PHC-014"
+      ],
+      "status": "approved",
+      "createdAt": "2026-10-18T07:15:08.537Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "bda2977e4abe4f576f70779df59b7b4c10782c931eb882cef49a8b644439eae6",
+      "userId": "USR-3F634294",
+      "createdAt": "2026-10-18T07:50:16.989Z",
+      "expiresAt": "2026-10-18T19:50:16.989Z"
+    },
+    {
+      "token": "55418721a6fc078838a2844fdf780a23e155edff126c9c58df16b47f0788741d",
+      "userId": "USR-E40BDB74",
+      "createdAt": "2026-10-18T08:37:48.962Z",
+      "expiresAt": "2026-10-18T20:37:48.962Z"
+    }
+  ],
+  "auditEvents": [
+    {
+      "id": "AUD-D91AFF38",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T08:37:48.965Z"
+    },
+    {
+      "id": "AUD-ABA60909",
+      "actorId": "USR-3F634294",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T08:32:54.259Z"
+    },
+    {
+      "id": "AUD-C4EF9656",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:50:16.991Z"
+    },
+    {
+      "id": "AUD-3196BCEA",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:50:13.819Z"
+    },
+    {
+      "id": "AUD-8F487F48",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:32:36.415Z"
+    },
+    {
+      "id": "AUD-6931153E",
+      "actorId": "USR-3F634294",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:32:31.477Z"
+    },
+    {
+      "id": "AUD-48614907",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:32:02.262Z"
+    },
+    {
+      "id": "AUD-6D0BA145",
+      "actorId": "USR-22CBC3E5",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:31:58.556Z"
+    },
+    {
+      "id": "AUD-879FB516",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:29:10.780Z"
+    },
+    {
+      "id": "AUD-A621F739",
+      "actorId": "USR-E4416C06",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:29:07.207Z"
+    },
+    {
+      "id": "AUD-F48DF394",
+      "actorId": "USR-E4416C06",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:33.990Z"
+    },
+    {
+      "id": "AUD-487B19A5",
+      "actorId": "USR-3F634294",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:30.665Z"
+    },
+    {
+      "id": "AUD-0D3D3F0F",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:19.745Z"
+    },
+    {
+      "id": "AUD-8FB14FF4",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:15.293Z"
+    },
+    {
+      "id": "AUD-F0FF6040",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:05.473Z"
+    },
+    {
+      "id": "AUD-B391F2BC",
+      "actorId": "USR-3F634294",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:26:02.895Z"
+    },
+    {
+      "id": "AUD-62792C21",
+      "actorId": "USR-22CBC3E5",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:52.923Z"
+    },
+    {
+      "id": "AUD-994D30BD",
+      "actorId": "USR-3F634294",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:49.634Z"
+    },
+    {
+      "id": "AUD-03D76191",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:39.702Z"
+    },
+    {
+      "id": "AUD-BD953CFA",
+      "actorId": "USR-E4416C06",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:33.905Z"
+    },
+    {
+      "id": "AUD-F94A8507",
+      "actorId": "USR-E4416C06",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:28.880Z"
+    },
+    {
+      "id": "AUD-F5742900",
+      "actorId": "USR-E4416C06",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:23:23.590Z"
+    },
+    {
+      "id": "AUD-5B0C368B",
+      "actorId": "USR-3F634294",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:21:37.005Z"
+    },
+    {
+      "id": "AUD-967C7455",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:21:32.524Z"
+    },
+    {
+      "id": "AUD-BE59CB54",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:21:13.275Z"
+    },
+    {
+      "id": "AUD-5FD9C1F8",
+      "actorId": "USR-E4416C06",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:16:02.957Z"
+    },
+    {
+      "id": "AUD-942F01FC",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.logout",
+      "details": {},
+      "createdAt": "2026-10-18T07:15:54.771Z"
+    },
+    {
+      "id": "AUD-8028B8D1",
+      "actorId": "USR-E40BDB74",
+      "action": "auth.login",
+      "details": {},
+      "createdAt": "2026-10-18T07:15:47.435Z"
+    }
+  ],
+  "stockRequests": [],
+  "operationsReports": [],
+  "notificationReads": {}
+}
