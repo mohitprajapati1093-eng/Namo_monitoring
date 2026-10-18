@@ -8,6 +8,26 @@ import {createServer as createViteServer} from 'vite'
 import {assessStockRisk,computeSafetyStock,reorderPoint,getTransferFeasibility} from './src/services/inventory-intelligence.mjs'
 const here=path.dirname(fileURLToPath(import.meta.url)), root=path.resolve(here,'..'), dbPath=process.env.SWASTHYAGRID_DB_PATH || path.join(here,'data','db.json')
 const app=express(), port=Number(process.env.PORT||3000), isDev=process.argv.includes('--dev'), httpServer=createHttpServer(app)
+
+// GitHub Pages is a separate origin from the Express API. Allow the configured
+// frontend origin(s) and local development, including browser preflight requests.
+const allowedOrigins = new Set([
+  'https://mohitprajapati1093-eng.github.io',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  ...(process.env.FRONTEND_ORIGIN || '').split(',').map(origin => origin.trim()).filter(Boolean)
+])
+app.use((req,res,next) => {
+  const origin = req.headers.origin
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+    res.setHeader('Vary', 'Origin')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,PUT,DELETE,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  }
+  if (req.method === 'OPTIONS') return res.sendStatus(origin && !allowedOrigins.has(origin) ? 403 : 204)
+  next()
+})
 app.use(express.json({limit:'1mb'}))
 let db, writeQueue=Promise.resolve()
 // Serialize JSON writes. Recover the queue after a failed write so one transient
