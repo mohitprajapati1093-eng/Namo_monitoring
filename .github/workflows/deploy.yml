@@ -37,6 +37,18 @@ jobs:
       - name: Run backend tests
         run: npm test
 
+      - name: Diagnose deployed Render API
+        continue-on-error: true
+        run: |
+          echo "=== API health endpoint ==="
+          curl --max-time 25 -sS -i https://namo-monitoring.onrender.com/api/health || true
+          echo
+          echo "=== Browser CORS preflight ==="
+          curl --max-time 25 -sS -i -X OPTIONS https://namo-monitoring.onrender.com/api/auth/login \
+            -H 'Origin: https://mohitprajapati1093-eng.github.io' \
+            -H 'Access-Control-Request-Method: POST' \
+            -H 'Access-Control-Request-Headers: content-type,authorization' || true
+
       - name: Build frontend
         run: npm run build -- --base=/Namo_monitoring/
 
