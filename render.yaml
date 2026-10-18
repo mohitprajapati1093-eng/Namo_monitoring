@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: namo-monitoring-api
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: mkdir -p /var/data && if [ ! -f /var/data/db.json ]; then cp backend/data/db.json /var/data/db.json; fi && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SWASTHYAGRID_DB_PATH
+        value: /var/data/db.json
+      - key: FRONTEND_ORIGIN
+        value: https://mohitprajapati1093-eng.github.io
+    disk:
+      name: namo-monitoring-data
+      mountPath: /var/data
+      sizeGB: 1
