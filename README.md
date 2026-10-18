@@ -22,7 +22,7 @@
 
 Namo Monitoring consolidates health-centre operations and supply-chain visibility into one role-aware interface. The current implementation uses:
 
-- **Frontend:** React 18, Vite, Recharts, and Lucide icons (`frontend/src/`).
+- **Frontend:** plain HTML (`frontend/index.html`), CSS (`frontend/styles.css`), and JavaScript (`frontend/app.js`, `frontend/config.js`), bundled with Vite. No React or JSX is used by the active frontend.
 - **Backend:** Node.js ES modules and Express REST API (`backend/server.mjs`).
 - **Persistence:** `backend/data/db.json`, initialized/updated by the backend.
 - **Development server:** Express hosts the API and integrates Vite in development so the app can run on one local port.
@@ -57,7 +57,7 @@ npm run build   # Build frontend assets into frontend/dist
 npm start       # Serve built frontend and API; build first
 ```
 
-The port defaults to `3000`; set `PORT` to override it. `npm run dev:web` starts Vite separately; when using that mode, ensure API requests are proxied to the Express server as configured in `frontend/vite.config.js`.
+The port defaults to `3000`; set `PORT` to override it. `npm run dev:web` starts Vite separately and proxies `/api` to `http://localhost:3000`. The GitHub Pages frontend is static and cannot host Express itself. Once the backend is deployed, set `window.NAMO_API_BASE` in `frontend/config.js` to its HTTPS origin and allow the Pages origin in the backend CORS policy. Until then, the live frontend will show API offline when it cannot reach a backend.
 
 ## Demo accounts
 
