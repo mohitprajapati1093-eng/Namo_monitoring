@@ -40,6 +40,7 @@ function alerts(){return [...db.medicines.map(m=>({m,r:risk(m)})).filter(x=>x.r.
 db=JSON.parse(await fs.readFile(dbPath,'utf8'))
 db.stockRequests ||= []
 db.operationsReports ||= []
+db.issueReports ||= []
 db.notificationReads ||= {}
 // Local-only demo identity store. Passwords are scrypt hashes; sessions are random bearer tokens
 // persisted in JSON for this single-process prototype. Replace with production identity/session storage before deployment.
@@ -72,6 +73,44 @@ app.post('/api/auth/users/:id/decision',async(req,res)=>{const actor=currentUser
 app.use('/api', (req,res,next)=>{if(req.path==='/health'||req.path.startsWith('/auth/'))return next();const user=currentUser(req);if(!user)return res.status(401).json({error:'Authentication required. Sign in with an approved demo account.'});req.user=user;next()})
 const canWrite=req=>[roles[0],roles[1],roles[2]].includes(req.user?.role)
 const scopedFacilities=user=>db.facilities.filter(f=>f.district===user.district&&(user.role===roles[0]||user.facilityIds?.includes(f.id)))
+
+app.get('/api/issue-reports',(req,res)=>{
+  const facilities=scopedFacilities(req.user), ids=new Set(facilities.map(f=>f.id))
+  res.json(db.issueReports.filter(issue=>ids.has(issue.facilityId)))
+})
+app.post('/api/issue-reports',async(req,res)=>{
+  const user=req.user, body=req.body||{}
+  if(![roles[0],roles[1],roles[3]].includes(user.role))return res.status(403).json({error:'Your role cannot report facility issues.'})
+  const facilityId=String(body.facilityId||''), facility=scopedFacilities(user).find(f=>f.id===facilityId)
+  if(!facility)return res.status(403).json({error:'Facility is outside your assigned scope.'})
+  const title=String(body.title||'').trim(), description=String(body.description||'').trim()
+  if(title.length<4||title.length>160)return res.status(400).json({error:'Issue title must be between 4 and 160 characters.'})
+  if(description.length<8||description.length>2000)return res.status(400).json({error:'Issue description must be between 8 and 2000 characters.'})
+  const categories=['Clinical','Diagnostics','Staffing','Infrastructure','Supplies','Other']
+  const priorities=['Low','Medium','High','Critical']
+  const category=String(body.category||'Other'), priority=String(body.priority||'Medium')
+  if(!categories.includes(category))return res.status(400).json({error:'Choose a supported issue category.'})
+  if(!priorities.includes(priority))return res.status(400).json({error:'Choose a supported issue priority.'})
+  const issue={id:'ISS-'+randomUUID().slice(0,8).toUpperCase(),facilityId,facility:facility.name,title,description,category,priority,status:'Open',reportedBy:user.id,reportedByName:user.name,createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),updates:[]}
+  db.issueReports.unshift(issue)
+  await audit(user,'issue.reported',{issueId:issue.id,facilityId,priority})
+  res.status(201).json({issue})
+})
+app.patch('/api/issue-reports/:id',async(req,res)=>{
+  const user=req.user, issue=db.issueReports.find(item=>item.id===req.params.id)
+  if(!issue)return notFound(res,'Issue report not found')
+  const facilities=scopedFacilities(user), facility=facilities.find(f=>f.id===issue.facilityId)
+  if(!facility)return res.status(403).json({error:'Issue is outside your assigned scope.'})
+  if(![roles[0],roles[1]].includes(user.role))return res.status(403).json({error:'Only administrators and facility managers can update issue status.'})
+  const status=String(req.body?.status||'')
+  if(!['Open','In progress','Resolved'].includes(status))return res.status(400).json({error:'Status must be Open, In progress or Resolved.'})
+  issue.status=status
+  issue.updatedAt=new Date().toISOString()
+  issue.updates ||= []
+  issue.updates.push({by:user.id,byName:user.name,status,at:issue.updatedAt,note:String(req.body?.note||'').trim().slice(0,500)})
+  await audit(user,'issue.status_updated',{issueId:issue.id,status})
+  res.json({issue})
+})
 
 app.get('/api/health',(_q,s)=>s.json({status:'ok',service:'Namo Monitoring API',persistence:'local JSON file',demoMode:true}))
 app.get('/api/bootstrap',(q,s)=>{db.medicines.forEach(risk);const fs=scopedFacilities(q.user),ids=new Set(fs.map(f=>f.id)),meds=db.medicines.filter(m=>m.district===q.user.district||fs.some(f=>f.name===m.facility||f.id===m.facilityId));s.json({facilities:fs,medicines:meds,alerts:alerts().filter(a=>fs.some(f=>f.name===a.facility||f.id===a.facility)),transfers:db.transfers.filter(t=>fs.some(f=>f.name===t.source||f.name===t.destination)),interventions:db.interventions.filter(c=>!c.facilityId||ids.has(c.facilityId)),transactions:db.transactions.filter(t=>fs.some(f=>f.name===t.facility)),stockRequests:db.stockRequests.filter(r=>fs.some(f=>f.name===r.facility||f.name===r.requestedFrom)),operationsReports:db.operationsReports.filter(r=>q.user.role===roles[0]||fs.some(f=>f.id===r.facilityId)),dashboard:dashboardStats(fs),demoMode:true,user:safeUser(q.user)})})
